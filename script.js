@@ -78,3 +78,31 @@ btnHold.addEventListener('click', function () {
     }
   }
 });
+
+// Functionality when clicking the new game button
+btnNew.addEventListener('click', function () {
+  // Checks if a player won the game. Removes winner display if so.
+  if (scores[currentPlayer] >= 100) {
+    document
+      .querySelector(`.player--${currentPlayer}`)
+      .classList.remove('player--winner');
+  } else {
+    elementDice.classList.add('hidden'); // Removes the button display if noone won the game
+  }
+  // Loops through the scores and resets them
+  for (let playerScore in scores) {
+    scores[playerScore] = 0;
+  }
+  // Resetting all variables and displays
+  playing = true;
+  currentScore = 0;
+  elementScore0.textContent = 0;
+  elementScore1.textContent = 0;
+  elementCurrentScore0.textContent = 0;
+  elementCurrentScore1.textContent = 0;
+  currentPlayer = 0;
+
+  // Makes the display show player 0 as active
+  elementPlayer0.classList.add('player--active'); // Changes the display of the element.
+  elementPlayer1.classList.remove('player--active'); // Changes the display of the element.
+});
